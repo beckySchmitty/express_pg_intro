@@ -1,3 +1,4 @@
+// database setup for users
 const { Client } = require("pg");
 
 let DB_URI;
