@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const ExpressError = require("./expressError");
+const db = require("./db");
+
 
 // Parse request bodies for JSON
 app.use(express.json());
