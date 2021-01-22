@@ -27,6 +27,7 @@ router.get('/search', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const { name, type } = req.body;
+        // use RETURNING to get respons or else resp.rows would be blank array
         const resp = await db.query(`INSERT INTO users (name, type) VALUES ($1, $2) RETURNING id, name, type`, [name,type])
         return res.status(201).json(resp.rows[0])
     } catch(e) {
