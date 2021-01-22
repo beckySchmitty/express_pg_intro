@@ -1,3 +1,5 @@
+-- remember to create usersdb_test as well
+
 DROP DATABASE IF EXISTS usersdb;
 
 CREATE DATABASE usersdb;

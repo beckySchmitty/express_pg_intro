@@ -35,6 +35,19 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+router.get('/:id', async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const resp = await db.query(`SELECT * FROM users WHERE id=$1`, [id])
+        if (resp.rows.length === 0) {
+            throw new ExpressError(`Cannot find a user with id of ${id}`, 404)
+        }
+        return res.json(resp.rows[0])
+    } catch(e) {
+        return next(e)
+    }
+})
+
 router.patch('/:id', async (req, res, next) => {
     try {
         const {id} = req.params;
